@@ -86,3 +86,21 @@ func RightChild(index int) int {
 func (h *Heap) Swap(index1, index2 int) {
 	h.Slice[index1], h.Slice[index2] = h.Slice[index2], h.Slice[index1]
 }
+
+func HeapMain() {
+	var heap Heap
+	slice := []int{10, 20, 30, 21, 43, 19, 28, 31, 67, 47, 86, 91}
+
+	for _, value := range slice {
+		heap.InsertMax(value)
+		fmt.Println(heap.Slice)
+	}
+
+	for index:=0; index<10; index++ {
+		heap.ExtractMax()
+		fmt.Println(heap.Slice)
+	}
+
+	heap.ExtractMax()
+	fmt.Println(heap.Slice)
+}
