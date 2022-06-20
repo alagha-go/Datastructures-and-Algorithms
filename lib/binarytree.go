@@ -1,6 +1,10 @@
 package lib
 
-import "fmt"
+import (
+	"encoding/json"
+	"io/ioutil"
+	"log"
+)
 
 // Node
 type Node struct {
@@ -31,6 +35,18 @@ func (n *Node) Insert(key int) {
 
 func BinaryTreeMain() {
 	tree := &Node{Key: 100}
-	fmt.Println(tree)
 	tree.Insert(50)
+	tree.Insert(200)
+	tree.Insert(300)
+	tree.Insert(400)
+	data, err := json.Marshal(tree)
+	HandleError(err)
+	err = ioutil.WriteFile("./DB/tree.json", data, 0755)
+	HandleError(err)
+}
+
+func HandleError(err error) {
+	if err != nil {
+		log.Panic(err)
+	}
 }
