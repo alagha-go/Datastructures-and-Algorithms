@@ -59,8 +59,8 @@ func BinaryTreeMain() {
 	HandleError(err)
 	err = ioutil.WriteFile("./DB/tree.json", data, 0755)
 	HandleError(err)
+	fmt.Println(tree.Search(141))
 	fmt.Println(tree.Search(241))
-	fmt.Println(301)
 }
 
 func HandleError(err error) {
